@@ -18,7 +18,15 @@ DataMapper::Model.raise_on_save_failure = true  # globally across all models
 #Create experiment
 puts "Loading experiments"
 experiment_data = Hash[File.read(ARGV[0]).split("\n").map{|l| l.split("\t")}]
-experiment = Experiment.create(:name => experiment_data["name"], :metadata => experiment_data.to_yaml)
+
+experiment_species = Species.first(:name => experiment_data["species"])
+experiment_group   = Experimentgroup.first(:name => experiment_data["group"])
+
+raise "Oh dear. I can't find that species in the database. Your options are: #{Species.find_all.map{|s| s.name}.join(", ")}. Does that help?" if experiment_species.nil?
+raise "Oh dear. I can't find that group in the database. Your options are: #{Experimentgroup.find_all.map{|s| s.name}.join(", ")}. Does that help?" if experiment_group.nil?
+
+experiment = Experiment.create(:name => experiment_data["name"], :species => experiment_species, :experimentgroup => experiment_group,
+                               :metadata => experiment_data.to_yaml)
 
 #Create sample groups and samples
 puts "Loading samples"
