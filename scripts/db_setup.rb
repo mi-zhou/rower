@@ -1,3 +1,5 @@
+#Run to initialise schema
+
 require "#{File.expand_path(File.dirname(__FILE__))}/db_schema.rb"
 
 DataMapper::Logger.new(STDOUT, :debug)
