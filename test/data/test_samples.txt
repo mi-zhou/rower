@@ -1,0 +1,5 @@
+SampleName	SampleGroup
+X	X
+XX	X
+Y	Y
+YY	Y
