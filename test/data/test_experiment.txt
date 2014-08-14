@@ -1,3 +1,5 @@
 name	Test experiment
+species	TestSpecies
+group	Test group
 description	This is a test experiment
 other_meta_data	This is other metadata
