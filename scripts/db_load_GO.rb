@@ -1,5 +1,7 @@
 #Run with two arguments: the location of the go data file, and 'species name'
+
 require "#{File.expand_path(File.dirname(__FILE__))}/db_schema.rb"
+require 'json'
 
 DataMapper::Logger.new(STDERR, :debug)
 

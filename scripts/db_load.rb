@@ -1,8 +1,9 @@
 #Run with four arguments: the location of the experiment definition file, sample definition file, feature definition file
 #And data matrix.
 
-require 'yaml'
 require "#{File.expand_path(File.dirname(__FILE__))}/db_schema.rb"
+require 'yaml'
+require 'json'
 
 DataMapper::Logger.new(STDERR, :debug)
 

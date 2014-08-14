@@ -1,6 +1,7 @@
 #Run with id of experiment to delete
 
 require "#{File.expand_path(File.dirname(__FILE__))}/db_schema.rb"
+require 'json'
 
 DataMapper::Logger.new(STDERR, :debug)
 

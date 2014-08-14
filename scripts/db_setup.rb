@@ -1,6 +1,7 @@
 #Run to initialise schema
 
 require "#{File.expand_path(File.dirname(__FILE__))}/db_schema.rb"
+require 'json'
 
 DataMapper::Logger.new(STDOUT, :debug)
 

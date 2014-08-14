@@ -5,6 +5,10 @@ DataMapper::Property::String.length(255)
 # set all properties to be required by default
 DataMapper::Property.required(true)
 
+DataMapper::Inflector.inflections do |inflect|
+  inflect.uncountable "species"
+end
+
 # NEW: GO term tables
 class GoGeneSpeciesXref
   include DataMapper::Resource
@@ -22,9 +26,9 @@ class Go
   property :go_id,      String, :unique => true
   property :term,       String
   
-  has n, :go_gene_specie_xrefs
-  has n, :genes, :through => :go_gene_specie_xrefs
-  has n, :species, :through => :go_gene_specie_xrefs
+  has n, :go_gene_species_xrefs
+  has n, :genes, :through => :go_gene_species_xrefs
+  has n, :species, :through => :go_gene_species_xrefs
 end
 
 class Gene
@@ -32,9 +36,9 @@ class Gene
   property :id,         Serial
   property :name,      String, :unique => true
   
-  has n, :go_gene_specie_xrefs
-  has n, :gos, :through => :go_gene_specie_xrefs
-  has n, :species, :through => :go_gene_specie_xrefs
+  has n, :go_gene_species_xrefs
+  has n, :gos, :through => :go_gene_species_xrefs
+  has n, :species, :through => :go_gene_species_xrefs
 end
 
 class Species
@@ -43,9 +47,9 @@ class Species
   property :name,      String, :unique => true
   
   has n, :experiments, :required => false
-  has n, :go_gene_specie_xrefs
-  has n, :gos, :through => :go_gene_specie_xrefs
-  has n, :genes, :through => :go_gene_specie_xrefs
+  has n, :go_gene_species_xrefs
+  has n, :gos, :through => :go_gene_species_xrefs
+  has n, :genes, :through => :go_gene_species_xrefs
 end
 
 class Experimentgroup
