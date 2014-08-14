@@ -1,0 +1,5 @@
+Gene	GOID	Term
+1	GO:123	Test term
+1	GO:124	Test term 2
+2	GO:123	Test term
+3	GO:125	Test term 3
