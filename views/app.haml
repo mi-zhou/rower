@@ -1,0 +1,85 @@
+%html
+  %head
+    %title Neusentis Data Viewer
+    %script{:language=>"javascript", :type=>"text/javascript", :src=>"js/jquery.min.js"}
+    %script{:language=>"javascript", :type=>"text/javascript", :src=>"js/jquery-ui.min.js"}
+    %script{:language=>"javascript", :type=>"text/javascript", :src=>"js/d3.v3.min.js"}
+    %script{:language=>"javascript", :type=>"text/javascript", :src=>"js/underscore-min.js"}
+    %script{:language=>"javascript", :type=>"text/javascript", :src=>"js/clusterfck-0.1.js"}
+    %script{:language=>"javascript", :type=>"text/javascript", :src=>"js/rower.js"}
+    %script{:language=>"javascript", :type=>"text/javascript", :src=>"js/rower_d3.js"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"css/rower.css"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"css/jquery-ui.css"}
+  %body
+    %div{:id=>"wrapper"}
+      %div{:id=>"title_area"}Neusentis Data Viewer
+      %div{:id=>"control_area"}
+        %fieldset{:id=>"fs_experarea"}
+          %legend Experiment
+          %select{:id=>"sel_experiment"}
+            %option{:value=>"",:style=>"display:none;"}(selected disabled)
+            -experimentgroups.each_with_index do |g,i|
+              %option{:value=>"group_#{g.id}"}(selected disabled)<
+                =g.name
+              -g.experiments.each_with_index do |e,j|
+                %option{:value=>"experiment_#{e.id}"}<
+                  =(j!=g.experiments.size-1) ? '&#9507; '+e.name : '&#9495; '+e.name
+          %div{:id=>"desc_experiment"}
+        %fieldset{:id=>"fs_queryarea"}
+          %legend Feature Query
+          %input{:id=>"input_query"}>
+          %select{:id=>"sel_querytype"}>
+            %option{:value=>"opt_str"} String Match
+            %option{:value=>"opt_regexp"} Regular Exp
+            %option{:value=>"opt_go"} GO Term
+          %button{:id=>"button_query"}FIND
+        %fieldset{:id=>"fs_plotparam"}
+          %legend Plot Parameters
+          %div
+            %div{:class=>"selectbox_panel"}
+              %div{:id=>"div_fsresult"} Query Results:
+              %select{:id=>"sel_fsresult",:size=>13,:multiple=>"multiple"}
+            %div{:class=>"selectbox_panel"}>
+              %button{:id=>"button_add"} &#9002;
+              %button{:id=>"button_rmv"} &#9001;
+              %br/
+              %button{:id=>"button_addall"} &#9002;&#9002;
+              %button{:id=>"button_rmvall"} &#9001;&#9001;
+            %div{:class=>"selectbox_panel"}
+              %div{:id=>"div_fstoplot"} Features To Plot:
+              %select{:id=>"sel_fstoplot",:size=>13,:multiple=>"multiple"}
+          %div
+            %div{:class=>"divbutton_panel div_plotopt"}
+              Plot Type
+              %br/
+              %div{:id=>"div_lineplot",:class=>"div_button"} LINEPLOT
+              %div{:id=>"div_barplot",:class=>"div_button"} BARPLOT
+              %div{:id=>"div_boxplot",:class=>"div_button"} BOXPLOT
+              %div{:id=>"div_heatmap",:class=>"div_button"} HEATMAP
+            %div{:class=>"divbutton_panel div_plotopt"}>
+              Plot Options
+              %br/
+              %div{:id=>"div_datapoint",:class=>"div_button"} Show Data Points
+              %div{:id=>"div_errorbar",:class=>"div_button"} Show Error Bars
+              %div{:id=>"div_percentile",:class=>"div_button"} Show Percentile
+              %div{:id=>"div_dendrogram",:class=>"div_button"} Show Dendrogram
+              %div{:id=>"div_clusterX",:class=>"div_button"} Cluster Features
+              %div{:id=>"div_meancent",:class=>"div_button"} Mean Center
+              %div{:id=>"div_filterfs",:class=>"div_button"} Filter Features
+            %div{:class=>"divbutton_panel div_plotopt"}
+              %br/
+              %button{:id=>"button_plot"} PLOT &#9002;&#9002;
+              %button{:id=>"button_clrplot"} CLEAR PLOT
+      %div{:id=>"svg_area"}>
+      %div{:id=>"instr_area"}
+        <b>Instructions</b>
+        <br/>&#8226; Select an experiment from the list (metadata associated with the experiment will be displayed in the box).
+        <br/>&#8226; Enter features (typically gene symbols) into the text boxes - data will be added to the plot.
+        <br/>&#8226; Bar, line and candle plots are available. The candle plot shows the error for each sample (defined as the median absolute deviation).
+        <br/>&#8226; If a feature is represented multiple times (e.g. multiple probes), the 'Filter features' option will attempt to select the most significant probe and only display that.
+        <br/>&#8226; The 'Show percentiles' option displays lines corresponding to the level of the 25th, 50th and 75th percentile of all values in the selected experiment. This can be used to get an impression of the absolute level of expression.
+        <br/>&#8226; 
+        %a{:href => "mailto:alex.gutteridge@pfizer.com"} Mail me
+        if you have questions.<br/>
+        %img{:src=>"images/logo.jpg", :width => 151, :height => 95}
+        

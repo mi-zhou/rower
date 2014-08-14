@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source /export/u2/PostgreSQL/9.1/pg_env.sh
+source /mnt/nas_omics/bioinf/etc/bioinf.bashrc
+
+/export/u2/PostgreSQL/9.1/bin/pg_ctl start
+cd /mnt/nas_omics/Rower
+ruby rower.rb -p 4569

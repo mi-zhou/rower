@@ -1,0 +1,123 @@
+div{
+  /*box-shadow:inset 0px 0px 0px 1px #f00;*/
+}
+
+button{
+  font:11px Ubuntu;
+}
+
+#wrapper{
+  /*width:1302px;*/
+  width:1305px;
+  font:13px sans-serif;
+}
+#title_area{
+  font:25px sans-serif;
+  text-align: center;
+  padding-bottom:10px;
+}
+#control_area{
+  width:350px;
+  min-height:530px;
+  display:inline-block;
+  vertical-align:top;
+}
+#svg_area{
+  width:950px;
+  height:530px;
+  border:1px solid black;
+  border-radius:10px;
+  display:inline-block;
+  vertical-align:top;
+}
+#instr_area{
+  width:1300px;
+  font:11px sans-serif;
+}
+
+fieldset{
+  padding:2px;
+  margin:1px;
+}
+fieldset legend{
+  color:blue;
+  font-weight:bold;
+}
+
+#sel_experiment{
+  width:340px;
+}
+#desc_experiment{
+  height:70px;
+  font:11px sans-serif;
+  overflow:auto;
+}
+
+#input_query{
+  width:190px;
+}
+#button_query{
+  width:46px;
+}
+
+#sel_fsresult,#sel_fstoplot{
+  width:150px;
+}
+#button_add,#button_addall,#button_rmv,#button_rmvall{
+  width:40px;
+  display:block;
+  font:11px Ubuntu;
+}
+
+.selectbox_panel{
+  display:inline-block;
+  vertical-align:middle;
+}
+.divbutton_panel{
+  display:inline-block;
+  vertical-align:top;
+}
+.div_button{
+  border:1px solid black;
+  margin:2px;
+  padding:0px 3px 0px 3px;
+  text-align:left;
+  cursor:default;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.div_button_sel{
+  background-color: #C77405;
+  color: white;
+  box-shadow:inset 0px 0px 0px 1px white;
+}
+.div_plotopt{
+  text-align: center;
+  margin:4px;
+}
+#button_plot{
+  width:100px;
+  height:70px;
+  display:block;
+  font:11px Ubuntu;
+}
+#button_clrplot{
+  width:100px;
+  display:block;
+  font:11px Ubuntu;
+}
+
+
+/*style for SVG elements*/
+.text{
+  font:10px sans-serif;
+}
+.axis path, .axis line{
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x.axis path{
+  display:none;
+}
