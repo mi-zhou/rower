@@ -68,8 +68,8 @@ class Experiment
   has n, :featuresets
   has n, :data
   
-  belongs_to :species
-  belongs_to :experimentgroup, :required => false 
+  belongs_to :species,         :required => false #This is to allow easy import of legacy data
+  belongs_to :experimentgroup, :required => false #Ditto
   
   property :id,         Serial
   property :name,       String
