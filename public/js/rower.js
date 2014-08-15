@@ -149,6 +149,9 @@ $(document).ready(function(){
         _.each(fs_query, function(d){resp_parse+='<option value="' + d + '">'+ d + '</option>';});
         $("#sel_fsresult").html(resp_parse);
         $("#div_fsresult").text("Query Results: "+response.length);
+        if(response.length == 1){
+	      $("#sel_fsresult option:first").attr('selected','selected');
+        }
       });
     }
   });
