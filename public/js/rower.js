@@ -192,6 +192,7 @@ $(document).ready(function(){
     _.each(FS_CURR, function(d){toplot+='<option value="' + d + '">'+ d + '</option>';});
     $("#sel_fstoplot").html(toplot);
     $("#div_fstoplot").text("Features To Plot: "+FS_CURR.length);
+    $("#button_plot").click();
   });
   
   //remove and remove_all button bind
@@ -208,6 +209,7 @@ $(document).ready(function(){
     _.each(FS_CURR, function(d){options+='<option value="' + d + '">'+ d + '</option>';});
     $("#sel_fstoplot").html(options);
     $("#div_fstoplot").text("Features To Plot: "+FS_CURR.length);
+    $("#button_plot").click();
   });
   
   //plot type and plot options bind
