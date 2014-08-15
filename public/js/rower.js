@@ -120,6 +120,7 @@ $(document).ready(function(){
           $("#sel_fstoplot").html(resp_parse);
           $("#div_fstoplot").text("Features To Plot: "+response.length);
           FS_CURR = fs_query;
+          FS_PREV = [];
           //FS_TOADD = fs_query;
           //FS_TORMV = FS_PREV;
           
